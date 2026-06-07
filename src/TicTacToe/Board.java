@@ -1,8 +1,30 @@
 package TicTacToe;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Board {
     private List<List<Cell>> grid;
     private int size;
+
+    public Board(int size) {
+        this.size = size;
+        this.grid = new ArrayList<>();
+        //TODO : we should get our grid ready based on size
+        for(int i=0;i<size;i++){
+            List<Cell> temp= new ArrayList<>();
+            for(int j=0;j<size;j++){
+                temp.add(new Cell(i, j, null, CellState.EMPTY));
+            }
+            grid.add(temp);
+        }
+    }
+    public void display(){
+        for(int i=0;i<size;i++){
+            for(int j=0;j<size;j++){
+                grid.get(i).get(j).display();
+            }
+            System.out.println();
+        }
+    }
 }

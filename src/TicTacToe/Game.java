@@ -28,6 +28,70 @@ public class Game {
         board.display();
     }
 
+    public void makeMove(){
+        //Identify who's turn it is
+        Player currentPlayer = players.get(nextPlayerIndex);
+        Move move = currentPlayer.makeMove();
+        try{
+            validateMove(move);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage() + "Please try again!");
+            return;
+        }
+
+        // update the state of game
+
+        updateGame(move, currentPlayer);
+        //Check the winner
+        if(checkWinner(move)){
+            winner = currentPlayer;
+            setGameState(GameState.SUCCESS);
+        }else if(checkDraw()){
+            setGameState(GameState.DRAW);
+        }
+    }
+
+    public boolean checkDraw(){
+        return moves.size() == board.getSize()*board.getSize();
+    }
+
+
+    public boolean checkWinner(Move move){
+        for(WinningStrategy strategy:winningStrategies){
+            if(strategy.checkWinner(getBoard(), move)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void updateGame(Move move, Player currentPlayer){
+        int row = move.getCell().getRow();
+        int col = move.getCell().getCol();
+        Cell actualCell = getBoard().getCell(row, col);
+        actualCell.setPlayer(currentPlayer);
+        actualCell.setCellState(CellState.FILLED);
+
+        nextPlayerIndex++;
+        nextPlayerIndex %= players.size();
+
+        move.setCell(actualCell);
+        moves.add(move);
+    }
+
+    public void validateMove(Move move){
+        // Cell should be valid
+        int row = move.getCell().getRow();
+        int col = move.getCell().getCol();
+
+        if(row<0 || row> board.getSize() || col<0 || col>board.getSize()){
+            throw new RuntimeException("Invalid Move!");
+        }
+        if(this.getBoard().getCell(row, col).getCellState().equals(CellState.FILLED)){
+            throw new RuntimeException("Invalid move!, Cell is already filled....");
+        }
+    }
+
     public Board getBoard() {
         return board;
     }

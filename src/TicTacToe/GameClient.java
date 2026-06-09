@@ -35,3 +35,29 @@ public class GameClient {
 
     }
 }
+
+//Game flow is set up, we need to focus on main thing which is makeMove() method
+//Implementing make Move
+
+//Human:
+    //input from user
+    //validate user input
+    //update the board : mark the cell with symbol+state
+    //update the turn
+    //add moves into the list of moves
+    //check winner/draw using selected strategies
+        //assign the winner
+        //change the state of game
+
+//Bot:
+    //some algorithm will suggest a move
+    //rest all steps same as Human
+    //update the board : mark the cell with symbol+state
+    //update the turn
+    //add moves into the list of moves
+    //check winner/draw using selected strategies
+    //assign the winner
+    //change the state of game
+
+
+

@@ -7,4 +7,7 @@ public class Bot extends Player{
         super(id, name, symbol, playerType);
         this.botDifficultyLevel = botDifficultyLevel;
     }
+    public Move makeMove(){
+        return null;
+    }
 }

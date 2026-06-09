@@ -14,17 +14,40 @@ public class Board {
         for(int i=0;i<size;i++){
             List<Cell> temp= new ArrayList<>();
             for(int j=0;j<size;j++){
-                temp.add(new Cell(i, j, null, CellState.EMPTY));
+                temp.add(new Cell(i, j));
             }
             grid.add(temp);
         }
     }
     public void display(){
-        for(int i=0;i<size;i++){
-            for(int j=0;j<size;j++){
+        for(int i=0;i<size;i++) {
+            for (int j = 0; j < size; j++) {
                 grid.get(i).get(j).display();
             }
             System.out.println();
         }
+    }
+    public void makeMove(){
+        System.out.println("Make a move : X row col");
+
+    }
+
+    public List<List<Cell>> getGrid() {
+        return grid;
+    }
+
+    public void setGrid(List<List<Cell>> grid) {
+        this.grid = grid;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+    public Cell getCell(int row, int col){
+        return grid.get(row).get(col);
     }
 }

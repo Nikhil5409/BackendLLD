@@ -18,7 +18,7 @@ public class GameController {
         List<Player> players = getPlayers(dimension);
         //ask for winning strategies
         List<WinningStrategy> winningStrategies = getWinningStrategies();
-
+        winningStrategies.add(new RowWinningStrategy());
         // create game object
         return new Game(dimension, players, winningStrategies);
     }
@@ -34,6 +34,7 @@ public class GameController {
     }
     public void makeMove(Game game){
         //TODO:
+        game.makeMove();
 
     }
     public String getWinner(Game game){

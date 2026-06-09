@@ -12,6 +12,7 @@ public abstract class Player {
         this.symbol = symbol;
         this.playerType = playerType;
     }
+    public abstract Move makeMove();
 
     public Integer getId() {
         return id;

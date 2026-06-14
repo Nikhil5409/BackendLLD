@@ -17,7 +17,7 @@ public class RowWinningStrategy implements WinningStrategy{
         if(!rowCount.get(row).containsKey(symbol)){
             rowCount.get(row).put(symbol, 0);
         }
-         rowCount.get(row).put(symbol, rowCount.get(row).get(symbol)+1);
+        rowCount.get(row).put(symbol, rowCount.get(row).get(symbol)+1);
         return  rowCount.get(row).get(symbol) == board.getSize();
     }
 }

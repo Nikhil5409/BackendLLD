@@ -6,7 +6,7 @@ import TicTacToe.Move;
 import java.util.HashMap;
 
 public class ColWinningStrategy implements WinningStrategy{
-    private static HashMap<Integer, HashMap<String, Integer>> colCount = new HashMap<>();
+    private HashMap<Integer, HashMap<String, Integer>> colCount = new HashMap<>();
     public boolean checkWinner(Board board, Move move){
         int col = move.getCell().getCol();
         String symbol = move.getPlayer().getSymbol().getSymbol();

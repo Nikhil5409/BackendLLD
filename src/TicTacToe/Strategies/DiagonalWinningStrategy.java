@@ -6,7 +6,7 @@ import TicTacToe.Move;
 import java.util.HashMap;
 
 public class DiagonalWinningStrategy implements WinningStrategy{
-    private static HashMap<String, HashMap<String, Integer>> diagCount = new HashMap<>();
+    private HashMap<String, HashMap<String, Integer>> diagCount = new HashMap<>();
     public boolean checkWinner(Board board, Move move){
         int row = move.getCell().getRow();
         int col = move.getCell().getCol();

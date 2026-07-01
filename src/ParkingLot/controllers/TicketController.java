@@ -16,7 +16,13 @@ public class TicketController {
     public IssueTicketResponse issueTicket(IssueTicketRequest request){
         IssueTicketResponse response = new  IssueTicketResponse();
         try{
-            Ticket ticket = ticketService.issueTicket();
+            Ticket ticket = ticketService.issueTicket(
+                    request.getGateId(),
+                    request.getLicensePlateNumber(),
+                    request.getOwnerName(),
+                    request.getVehicleType(),
+                    request.getParkingLotId()
+            );
             response.setTicketId(ticket.getId());
             response.setResponseStatus(ResponseStatus.SUCCESS);
         }catch(Exception ex){
@@ -25,4 +31,4 @@ public class TicketController {
         }
         return response;
     }
-}
+ }

@@ -1,11 +1,21 @@
 package ParkingLot.models;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class ParkingSlot extends BaseModel{
     private String parkingSlotNumber;
     private ParkingSlotStatus parkingSlotStatus;
-    private List<VehicleType> allowedVehicleTypes;
+    private HashSet<VehicleType> allowedVehicleTypes;
+    private ParkingFloor parkingFloor;
+
+    public ParkingFloor getParkingFloor() {
+        return parkingFloor;
+    }
+
+    public void setParkingFloor(ParkingFloor parkingFloor) {
+        this.parkingFloor = parkingFloor;
+    }
 
     public String getParkingSlotNumber() {
         return parkingSlotNumber;
@@ -23,11 +33,11 @@ public class ParkingSlot extends BaseModel{
         this.parkingSlotStatus = parkingSlotStatus;
     }
 
-    public List<VehicleType> getAllowedVehicleTypes() {
+    public HashSet<VehicleType> getAllowedVehicleTypes() {
         return allowedVehicleTypes;
     }
 
-    public void setAllowedVehicleTypes(List<VehicleType> allowedVehicleTypes) {
+    public void setAllowedVehicleTypes(HashSet<VehicleType> allowedVehicleTypes) {
         this.allowedVehicleTypes = allowedVehicleTypes;
     }
 }

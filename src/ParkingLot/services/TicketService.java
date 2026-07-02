@@ -39,10 +39,12 @@ public class TicketService {
             vehicleInfo.setLicensePlate(licensePlateNumber);
             vehicleInfo.setOwnerName(ownerName);
             // we need to save new vehicle details to db
+            vehicleRepository.save(vehicleInfo);
         }else{
             vehicleInfo = vehicleOptional.get();
         }
         // 3) assign a slot
+        // here synchronization issue might occur, race conditions when 2 operators may assign same slot at diff gates
         Optional<ParkingLot> parkingLotOptional = parkingLotRepository.findParkingLotById(parkingLotId);
         if(parkingLotOptional.isEmpty()){
             throw new RuntimeException("invalid parking lot id");

@@ -51,6 +51,9 @@ public class TicketService {
         }
         ParkingLot parkingLot = parkingLotOptional.get();
         ParkingSlot parkingSlot = parkingLot.getSlotAssignmentStrategy().assignSlot(parkingLot, vehicleType);
+        if(parkingSlot == null){
+            throw new RuntimeException("Parking Lot Full");
+        }
         parkingSlot.setParkingSlotStatus(ParkingSlotStatus.FILLED);
         // 4) create a new ticket object, set attributes
         Ticket ticket = new Ticket();
